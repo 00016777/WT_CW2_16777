@@ -16,9 +16,9 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:[true,'distributor must have an address']
     },
-    type:{
+    variety:{
         type:String,
-        required:[true,'medicine must have a course']
+        required:[true,'medicine must have a variety']
     }
 })
 

@@ -1,11 +1,11 @@
 html
   head
     title Add Medicine Form
-    link(rel='stylesheet', href='/styles/add-user.css')
+    link(rel='stylesheet', href='/styles/add-medicine.css')
 
   body
     .container
-      form.add-user-form(action='/users', method='POST')
+      form.add-medicine-form(action='/medicines', method='POST')
         h2 Add New Medicine
         label(for='name') Name
         input#name(type='text', name='name', placeholder='Enter name', required)
@@ -13,6 +13,6 @@ html
         input#email(type='email', name='email', placeholder='Enter Distributor email', required )
         label(for='address') DistributorAddress
         input#address(type='text', name='address', placeholder='Enter Distributor address', required)
-        label(for='type') Type
-        input#type(type='text', name='course', placeholder='Enter type', required)
+        label(for='variety') Variety
+        input#type(type='text', name='variety', placeholder='Enter variety', required)
         button(type='submit') Add Medicine

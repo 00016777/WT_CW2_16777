@@ -3,7 +3,7 @@ import pug from "pug";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { nextTick } from "process";
-import User from "../public/models/userModel.js";
+import User from "../public/models/medicineModel.js";
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirname = dirname(__fileName);
@@ -11,15 +11,15 @@ const __dirname = dirname(__fileName);
 
 const pathToTemplates = path.resolve(__dirname, "..", "views", "");
 
-export const getUsers = async (req, res) => {
-  const userTemplatePath = path.resolve(pathToTemplates, "users.pug");
+export const getMedicines = async (req, res) => {
+  const userTemplatePath = path.resolve(pathToTemplates, "medicines.pug");
   const template = pug.compileFile(userTemplatePath);
   const users =  await User.find();
   const renderedTemplate = template({ users: users });
   res.send(renderedTemplate);
 };
 
-export const getUserById = async (req, res, next) => {
+export const getMedicineById = async (req, res, next) => {
 
   const id = req.params.id;
   const user = await User.findById(id)
@@ -28,53 +28,55 @@ export const getUserById = async (req, res, next) => {
   next();
 };
 
-export const deleteUser =  async (req, res,next) => {
+export const deleteMedicine =  async (req, res,next) => {
   const id = req.params.id;
   await User.findByIdAndDelete(id);
-  res.redirect('/users')
+  res.status(201).send('success')
 };
 
-export const addUserForm = (req,res)=>{
-  const userTemplatePath = path.resolve(pathToTemplates, "add-user.pug");
+export const addMedicineForm = (req,res)=>{
+  const userTemplatePath = path.resolve(pathToTemplates, "add-medicine.pug");
   const template = pug.compileFile(userTemplatePath);
   const renderedTemplate = template();
   res.send(renderedTemplate)
 }
 
-export const addUser = async (req, res,next) => {
-  const { name, email, address, type } = req.body;
+export const addMedicine = async (req, res,next) => {
+  const { name, email, address, variety } = req.body;
   const newUser = {
     name,
     email,
     address,
-    type,
+    variety,
   };
   await User.create(newUser)
-  res.redirect('/users')
+  res.redirect('/medicines')
 };
 
-export const updateUser = async (req,res) => {
+export const updateMedicine = async (req,res) => {
   const id = req.params.id;
 
-  const { name, email, address, type } = req.body;
+  const { name, email, address, variety } = req.body;
   const  updatedUser = {
     name,
     email,
     address,
-    type
+    variety
   }
+ 
 
   await User.findByIdAndUpdate(id,updatedUser,{
     new:true,
     runValidators:true
   })
-  res.redirect('/users')
+
+  res.status(201).send('success');
 
   
 }
 
-export const editUserForm =  (req,res)=>{
-  const userTemplatePath = path.resolve(pathToTemplates, "update-user.pug");
+export const editMedicineForm =  (req,res)=>{
+  const userTemplatePath = path.resolve(pathToTemplates, "update-medicine.pug");
   const template = pug.compileFile(userTemplatePath);
   const id = req.params.id
   const renderedTemplate = template({ user: req.user });

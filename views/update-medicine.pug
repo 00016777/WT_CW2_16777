@@ -1,11 +1,11 @@
 html
   head
     title Add Medicine Form
-    link(rel='stylesheet', href='/styles/add-user.css')
+    link(rel='stylesheet', href='/styles/add-medicine.css')
 
   body
     .container
-      form.add-user-form
+      form.add-medicine-form
         h2 Update Medicine 
         label(for='name') Name
         input#name(type='text', name='name', placeholder='Enter name', value=`${user.name}`,required)
@@ -13,20 +13,20 @@ html
         input#email(type='email', name='email', placeholder='Enter email', value=`${user.email}`, required )
         label(for='address') DistributorAddress
         input#address(type='text', name='address', placeholder='Enter address', value=`${user.address}`, required)
-        label(for='type') Type
-        input#type(type="text")(type='text', name='type', placeholder='Enter type', value=`${user.type}`, required)
-      button.update-button(type='submit' onclick=`updateUser('${user.id}')`) Update Medicine
+        label(for='variety') Variety 
+        input#variety(type='text', name='variety', placeholder='Enter variety', value=`${user.variety}`, required)
+      button.update-button(type='submit' onclick=`updateMedicine('${user.id}')`) Update Medicine
 script.
-  function updateUser(userId) {
+  function updateMedicine(userId) {
     console
     if (confirm('Are you sure you want to update this medicine?')) {
-      const form = document.querySelector('.add-user-form');
+      const form = document.querySelector('.add-medicine-form');
     const name = form.querySelector('#name').value;
     const email = form.querySelector('#email').value;
     const address = form.querySelector('#address').value;
-    const type = form.querySelector('#type').value;
-    const body = { name, email, address, type };
-     fetch(`/users/${userId}`, {
+    const variety = form.querySelector('#variety').value;
+    const body = { name, email, address, variety };
+     fetch(`/medicines/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ script.
       .then(response => {
         if (response.ok) {
           alert('Successfully updated')
-          location.href='/users';
+          location.href='/medicines';
         } else {
           alert('Error Updating medicine');
         }

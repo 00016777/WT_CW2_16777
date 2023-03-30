@@ -1,28 +1,32 @@
-/* Add User Form Styles */
+/* Add Medicine Form Styles */
+body {
+  background-color: sandybrown;
+}
 .container {
   max-width: 500px;
   margin: auto;
+  background-color: #3498db;
 }
 
-.add-user-form {
+.add-medicine-form {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 }
 
-.add-user-form h2 {
+.add-medicine-form h2 {
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.add-user-form label {
+.add-medicine-form label {
   display: block;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.add-user-form input {
+.add-medicine-form input {
   width: 100%;
   padding: 10px;
   font-size: 18px;
@@ -31,10 +35,10 @@
   margin-bottom: 20px;
 }
 
-.add-user-form button,
+.add-medicine-form button,
 .update-button {
   padding: 10px 20px;
-  background-color: #3498db;
+  background-color: tomato;
   color: #fff;
   font-size: 18px;
   border: none;
@@ -43,6 +47,6 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.add-user-form button:hover {
-  background-color: #2980b9;
+.add-medicine-form button:hover {
+  background-color: tomato;
 }

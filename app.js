@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
-import userRoutes from "./routes/students.js";
+import userRoutes from "./routes/medicines.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from 'dotenv'
@@ -27,10 +27,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "pug");
 
-app.use("/users", userRoutes);
+app.use("/medicines", userRoutes);
 
 app.use("/", (req, res) => {
-  res.redirect('/users');
+  res.redirect('/medicines');
 });
 
 app.listen(process.env.PORT, () => {
