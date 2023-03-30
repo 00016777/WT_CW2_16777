@@ -1,0 +1,31 @@
+{
+  "name": "WT_CW2_16777",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "add": "node public/db/import-dev-data.js --import",
+    "delete": "node public/db/import-dev-data.js --delete"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@wiut:00016777/WT_CW2_16777.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.2",
+    "nodemon": "^2.0.22",
+    "pug": "^3.0.2",
+    "validator": "^13.9.0"
+  }
+}

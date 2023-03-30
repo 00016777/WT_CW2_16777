@@ -1,0 +1,18 @@
+html
+  head
+    title Add Medicine Form
+    link(rel='stylesheet', href='/styles/add-user.css')
+
+  body
+    .container
+      form.add-user-form(action='/users', method='POST')
+        h2 Add New Medicine
+        label(for='name') Name
+        input#name(type='text', name='name', placeholder='Enter name', required)
+        label(for='email') DistributorEmail
+        input#email(type='email', name='email', placeholder='Enter Distributor email', required )
+        label(for='address') DistributorAddress
+        input#address(type='text', name='address', placeholder='Enter Distributor address', required)
+        label(for='type') Type
+        input#type(type='text', name='course', placeholder='Enter type', required)
+        button(type='submit') Add Medicine
